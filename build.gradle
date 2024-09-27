@@ -1,0 +1,73 @@
+plugins {
+    id 'groovy'
+    id 'java-library'
+    id 'maven-publish'
+}
+
+group = 'com.mentalresonance'
+version = '1.0.1'
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+    // Needed to get spock snapshot below
+    maven { url 'https://oss.sonatype.org/content/repositories/snapshots' }
+}
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(21)
+    }
+}
+
+dependencies {
+    implementation 'commons-lang:commons-lang:2.6'
+    implementation 'com.mentalresonance:dust-http:1.0.1'
+    compileOnly 'org.slf4j:slf4j-simple:2.0.7'
+    compileOnly 'org.apache.groovy:groovy-all:4.0.12'
+
+    compileOnly 'org.projectlombok:lombok:1.18.30'
+    annotationProcessor 'org.projectlombok:lombok:1.18.30'
+
+    api 'org.jsoup:jsoup:1.15.3'
+    api 'com.mentalresonance:dust-core:1.0.1'
+
+    // This version for Java 21
+    testImplementation platform("org.spockframework:spock-bom:2.4-groovy-4.0-SNAPSHOT")
+    testImplementation 'org.spockframework:spock-core'
+    testImplementation 'org.projectlombok:lombok:1.18.30'
+    testImplementation 'org.slf4j:slf4j-simple:2.0.7'
+}
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            from components.java
+        }
+    }
+}
+
+test {
+    useJUnitPlatform()
+    jvmArgs([
+        '-Xmx4g',
+        '--add-opens=java.base/java.lang=ALL-UNNAMED',
+        '--add-opens=java.base/java.math=ALL-UNNAMED',
+        '--add-opens=java.base/java.util=ALL-UNNAMED',
+        '--add-opens=java.base/java.util.concurrent=ALL-UNNAMED',
+        '--add-opens=java.base/java.net=ALL-UNNAMED',
+        '--add-opens=java.base/java.text=ALL-UNNAMED',
+        '--add-opens=java.sql/java.sql=ALL-UNNAMED',
+    ])
+
+}
+
+tasks.withType(JavaCompile).each {
+    // it.options.compilerArgs.add('-Xlint:preview')
+}
+
+tasks.withType(GroovyCompile).each {
+}
+java {
+    withSourcesJar()
+}
