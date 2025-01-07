@@ -5,7 +5,7 @@ plugins {
 }
 
 group = 'com.mentalresonance'
-version = '1.0.2'
+version = '1.0.4'
 
 repositories {
     mavenLocal()
@@ -22,7 +22,6 @@ java {
 
 dependencies {
     implementation 'commons-lang:commons-lang:2.6'
-    implementation 'com.mentalresonance:dust-http:1.0.1'
     compileOnly 'org.slf4j:slf4j-simple:2.0.7'
     compileOnly 'org.apache.groovy:groovy-all:4.0.12'
 
@@ -30,13 +29,14 @@ dependencies {
     annotationProcessor 'org.projectlombok:lombok:1.18.30'
 
     api 'org.jsoup:jsoup:1.15.3'
-    api 'com.mentalresonance:dust-core:1.0.2'
+    api 'com.mentalresonance:dust-core:1.1.2'
 
     // This version for Java 21
     testImplementation platform("org.spockframework:spock-bom:2.4-groovy-4.0-SNAPSHOT")
     testImplementation 'org.spockframework:spock-core'
     testImplementation 'org.projectlombok:lombok:1.18.30'
     testImplementation 'org.slf4j:slf4j-simple:2.0.7'
+    testImplementation 'com.mentalresonance:dust-http:1.0.4'
 }
 
 publishing {
