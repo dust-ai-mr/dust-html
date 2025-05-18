@@ -75,6 +75,11 @@ public abstract class DocumentMsg extends ReturnableMsg {
     String type;
 
     /**
+     * Optional ref to Actor that was the feed for this document (so we can do accounting, management etc)
+     */
+    ActorRef feed;
+
+    /**
      * Constructor
      * @param sender return address
      */

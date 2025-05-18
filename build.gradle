@@ -5,7 +5,7 @@ plugins {
 }
 
 group = 'com.mentalresonance'
-version = '1.0.4'
+version = '1.1.5'
 
 repositories {
     mavenLocal()
@@ -29,7 +29,7 @@ dependencies {
     annotationProcessor 'org.projectlombok:lombok:1.18.30'
 
     api 'org.jsoup:jsoup:1.15.3'
-    api 'com.mentalresonance:dust-core:1.1.2'
+    api 'com.mentalresonance:dust-core:1.1.5'
 
     // This version for Java 21
     testImplementation platform("org.spockframework:spock-bom:2.4-groovy-4.0-SNAPSHOT")
