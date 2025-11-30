@@ -74,6 +74,13 @@ public class HtmlDocumentMsg extends DocumentMsg {
     }
 
     /**
+     * Remove superfluous elements but retain structural elements with text
+     * @return structural html
+     */
+
+    public String extractStructureText() { return HtmlService.extractStructuralText(html); }
+
+    /**
      * Just the raw text of the document - white space normalized
      * @return raw text of document with one-space whitespace
      */

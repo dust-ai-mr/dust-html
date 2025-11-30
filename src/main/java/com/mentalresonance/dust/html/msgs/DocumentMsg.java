@@ -25,6 +25,8 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.io.Serializable;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.UUID;
 
 
@@ -78,6 +80,11 @@ public abstract class DocumentMsg extends ReturnableMsg {
      * Optional ref to Actor that was the feed for this document (so we can do accounting, management etc)
      */
     ActorRef feed;
+
+    /**
+     * Other stuff we want to carry around
+     */
+    Map<String, Serializable> options = new HashMap<>();
 
     /**
      * Constructor
