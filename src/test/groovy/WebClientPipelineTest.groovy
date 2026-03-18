@@ -22,6 +22,7 @@ import com.mentalresonance.dust.core.actors.Actor
 import com.mentalresonance.dust.core.actors.ActorBehavior
 import com.mentalresonance.dust.core.actors.ActorRef
 import com.mentalresonance.dust.core.actors.ActorSystem
+import com.mentalresonance.dust.core.actors.ActorSystemBuilder
 import com.mentalresonance.dust.core.actors.PoisonPill
 import com.mentalresonance.dust.core.actors.Props
 import com.mentalresonance.dust.core.actors.lib.PipelineActor
@@ -126,7 +127,7 @@ class WebClientPipelineTest extends Specification {
 
 	def "WebPipe"() {
 		when:
-			ActorSystem system = new ActorSystem("Test")
+			ActorSystem system = new ActorSystemBuilder().name("Test").build()
 			ActorRef pipe = system.context.actorOf(PipelineActor.props(
 				// Create a pipeline which
 				[
