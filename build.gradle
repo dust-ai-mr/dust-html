@@ -18,6 +18,7 @@ java {
     toolchain {
         languageVersion = JavaLanguageVersion.of(21)
     }
+    withSourcesJar()
 }
 
 dependencies {
@@ -29,7 +30,7 @@ dependencies {
     annotationProcessor 'org.projectlombok:lombok:1.18.30'
 
     api 'org.jsoup:jsoup:1.15.3'
-    api 'com.mentalresonance:dust-core:1.1.5'
+    api 'com.mentalresonance:dust-core:2.0'
 
     // This version for Java 21
     testImplementation 'org.spockframework:spock-core:2.4-M7-groovy-4.0'
